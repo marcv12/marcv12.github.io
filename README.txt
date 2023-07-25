@@ -1,1 +1,1 @@
-Interested in knowing about me? Check out my [[personal portfolio](https://marcv12.github.io/)]!
+Interested in knowing about me? Check out my [[Link to Project](https://github.com/marcv12/startup_success_prediction)]!
