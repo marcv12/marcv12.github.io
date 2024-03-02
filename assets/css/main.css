@@ -2448,8 +2448,8 @@ input, select, textarea {
 
 	/* Button adjustments for smaller buttons */
 	.button.small {
-	    padding: 0.5em 1em; /* Adjust padding for smaller size */
-	    font-size: 0.8em; /* Smaller font size */
-	    margin-top: 0.5em; /* Adjust top margin for alignment */
-	    max-width: initial; /* Override any max-width settings if needed */
-	}
+	    padding: 0.5em 1em !important; /* Adjust padding for smaller size */
+	    font-size: 0.8em !important; /* Smaller font size */
+	    margin-top: 0.5em !important; /* Adjust top margin for alignment */
+	    max-width: initial !important; /* Override any max-width settings if needed */
+}
