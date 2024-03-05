@@ -8,27 +8,26 @@ const greetings = [
 
 let currentIndex = 0;
 
-function typeGreeting(fullGreeting, i = 0) {
-    if (i <= fullGreeting.length) {
-        document.getElementById('greeting').innerHTML = fullGreeting.substring(0, i);
-        setTimeout(() => typeGreeting(fullGreeting, i + 1), 100); // Adjust typing speed here
+function typeGreeting(message, index) {
+    if (index < message.length) {
+        document.getElementById('greeting').innerHTML = message.substring(0, index + 1);
+        setTimeout(() => typeGreeting(message, index + 1), 100); // Adjust typing speed
     } else {
-        // Wait a bit before starting to delete
-        setTimeout(() => deleteGreeting(fullGreeting), 2000); // Adjust pause duration here
+        // Wait a bit before starting to erase the greeting
+        setTimeout(() => eraseGreeting(message), 2000); // Adjust pause duration
     }
 }
 
-function deleteGreeting(fullGreeting, i = null) {
-    i = i !== null ? i : fullGreeting.length;
-    if (i >= 0) {
-        document.getElementById('greeting').innerHTML = fullGreeting.substring(0, i);
-        setTimeout(() => deleteGreeting(fullGreeting, i - 1), 50); // Adjust deletion speed here
+function eraseGreeting(message) {
+    if (message.length > 0) {
+        document.getElementById('greeting').innerHTML = message.substring(0, message.length - 1);
+        setTimeout(() => eraseGreeting(message.substring(0, message.length - 1)), 100); // Adjust erasing speed
     } else {
-        // Change greeting after deletion
+        // Move to the next greeting after the current one is erased
         currentIndex = (currentIndex + 1) % greetings.length;
-        typeGreeting(greetings[currentIndex]);
+        typeGreeting(greetings[currentIndex], 0);
     }
 }
 
 // Start the cycle on page load
-window.addEventListener('load', () => typeGreeting(greetings[currentIndex]));
+window.addEventListener('load', () => typeGreeting(greetings[currentIndex], 0));
