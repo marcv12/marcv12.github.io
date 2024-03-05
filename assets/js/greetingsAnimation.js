@@ -8,26 +8,38 @@ const greetings = [
 
 let currentIndex = 0;
 
-function typeGreeting(message, index) {
-    if (index < message.length) {
-        document.getElementById('greeting').innerHTML = message.substring(0, index + 1);
-        setTimeout(() => typeGreeting(message, index + 1), 100); // Adjust typing speed
+function updateGreeting(newText, oldText, isDeleting) {
+    const greetingElement = document.getElementById('greeting');
+    
+    if (isDeleting) {
+        // Remove last character
+        greetingElement.innerHTML = oldText.substring(0, oldText.length - 1);
     } else {
-        // Wait a bit before starting to erase the greeting
-        setTimeout(() => eraseGreeting(message), 2000); // Adjust pause duration
+        // Add next character
+        greetingElement.innerHTML = newText.substring(0, oldText.length + 1);
     }
-}
 
-function eraseGreeting(message) {
-    if (message.length > 0) {
-        document.getElementById('greeting').innerHTML = message.substring(0, message.length - 1);
-        setTimeout(() => eraseGreeting(message.substring(0, message.length - 1)), 100); // Adjust erasing speed
-    } else {
-        // Move to the next greeting after the current one is erased
+    let timeout = 200; // Typing speed
+
+    if (isDeleting) {
+        timeout /= 2; // Make deletion faster
+    }
+
+    if (!isDeleting && oldText === newText) {
+        // If finished typing, pause before starting to delete
+        timeout = 3000;
+        isDeleting = true;
+    } else if (isDeleting && oldText === '') {
+        // If finished deleting, move to the next greeting and pause
+        isDeleting = false;
         currentIndex = (currentIndex + 1) % greetings.length;
-        typeGreeting(greetings[currentIndex], 0);
+        timeout = 500; // Pause before typing next greeting
     }
+
+    setTimeout(() => {
+        updateGreeting(greetings[currentIndex], greetingElement.innerHTML, isDeleting);
+    }, timeout);
 }
 
-// Start the cycle on page load
-window.addEventListener('load', () => typeGreeting(greetings[currentIndex], 0));
+// Start the typing effect when the page loads
+window.addEventListener('load', () => updateGreeting(greetings[currentIndex], '', false));
