@@ -34,7 +34,7 @@ function updateGreeting() {
         }
     }
     element.innerHTML = currentText;
-    setTimeout(updateGreeting, currentStep === 'typing' ? 100 : 60); // Quicker typing, quicker erasing
+    setTimeout(updateGreeting, currentStep === 'typing' ? 80 : 40); // Quicker typing, quicker erasing
 }
 
 // Start the cycle on page load
