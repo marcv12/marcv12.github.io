@@ -7,39 +7,35 @@ const greetings = [
 ];
 
 let currentIndex = 0;
+let currentStep = 'typing'; // Can be 'typing' or 'erasing'
+let currentText = '';
+let currentLength = 0;
 
-function updateGreeting(newText, oldText, isDeleting) {
-    const greetingElement = document.getElementById('greeting');
-    
-    if (isDeleting) {
-        // Remove last character
-        greetingElement.innerHTML = oldText.substring(0, oldText.length - 1);
-    } else {
-        // Add next character
-        greetingElement.innerHTML = newText.substring(0, oldText.length + 1);
+function updateGreeting() {
+    const element = document.getElementById('greeting');
+    if (currentStep === 'typing') {
+        if (currentLength < greetings[currentIndex].length) {
+            currentLength++;
+            currentText = greetings[currentIndex].substring(0, currentLength);
+        } else {
+            setTimeout(() => {
+                currentStep = 'erasing';
+                updateGreeting();
+            }, 1500); // Slight pause before erasing
+            return;
+        }
+    } else if (currentStep === 'erasing') {
+        if (currentLength > 0) {
+            currentLength--;
+            currentText = currentText.substring(0, currentLength);
+        } else {
+            currentIndex = (currentIndex + 1) % greetings.length;
+            currentStep = 'typing';
+        }
     }
-
-    let timeout = 200; // Typing speed
-
-    if (isDeleting) {
-        timeout /= 2; // Make deletion faster
-    }
-
-    if (!isDeleting && oldText === newText) {
-        // If finished typing, pause before starting to delete
-        timeout = 3000;
-        isDeleting = true;
-    } else if (isDeleting && oldText === '') {
-        // If finished deleting, move to the next greeting and pause
-        isDeleting = false;
-        currentIndex = (currentIndex + 1) % greetings.length;
-        timeout = 500; // Pause before typing next greeting
-    }
-
-    setTimeout(() => {
-        updateGreeting(greetings[currentIndex], greetingElement.innerHTML, isDeleting);
-    }, timeout);
+    element.innerHTML = currentText;
+    setTimeout(updateGreeting, currentStep === 'typing' ? 100 : 60); // Quicker typing, quicker erasing
 }
 
-// Start the typing effect when the page loads
-window.addEventListener('load', () => updateGreeting(greetings[currentIndex], '', false));
+// Start the cycle on page load
+window.addEventListener('load', updateGreeting);
