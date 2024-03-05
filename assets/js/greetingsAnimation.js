@@ -8,11 +8,27 @@ const greetings = [
 
 let currentIndex = 0;
 
-function changeGreeting() {
-    document.getElementById('greeting').innerHTML = greetings[currentIndex];
-    currentIndex = (currentIndex + 1) % greetings.length; // Loop back to the first greeting after the last one
-    setTimeout(changeGreeting, 3000); // Change greeting every 3 seconds
+function typeGreeting(fullGreeting, i = 0) {
+    if (i <= fullGreeting.length) {
+        document.getElementById('greeting').innerHTML = fullGreeting.substring(0, i);
+        setTimeout(() => typeGreeting(fullGreeting, i + 1), 100); // Adjust typing speed here
+    } else {
+        // Wait a bit before starting to delete
+        setTimeout(() => deleteGreeting(fullGreeting), 2000); // Adjust pause duration here
+    }
+}
+
+function deleteGreeting(fullGreeting, i = null) {
+    i = i !== null ? i : fullGreeting.length;
+    if (i >= 0) {
+        document.getElementById('greeting').innerHTML = fullGreeting.substring(0, i);
+        setTimeout(() => deleteGreeting(fullGreeting, i - 1), 50); // Adjust deletion speed here
+    } else {
+        // Change greeting after deletion
+        currentIndex = (currentIndex + 1) % greetings.length;
+        typeGreeting(greetings[currentIndex]);
+    }
 }
 
 // Start the cycle on page load
-window.addEventListener('load', changeGreeting);
+window.addEventListener('load', () => typeGreeting(greetings[currentIndex]));
