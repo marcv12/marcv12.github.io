@@ -2359,15 +2359,7 @@ input, select, textarea {
 					margin-bottom: 1em;
 				}
 
-				.box .image.featured {
-				    position: relative;
-				    left: 20px; /* Adjust if needed */
-				    top: 20px; /* Adjust if needed */
-				    margin: 0 auto; /* Centers the image, remove negative values if not needed */
-				    max-width: 100%; /* Ensures image is not wider than its container */
-				    height: auto; /* Keeps the aspect ratio of the image */
-				    display: block; /* Forces the image to be on a new line and centered */
-				}
+				
 
 				.box.style1 {
 					max-width: 32em;
