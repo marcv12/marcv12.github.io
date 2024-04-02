@@ -21,7 +21,7 @@ function updateGreeting() {
             setTimeout(() => {
                 currentStep = 'erasing';
                 updateGreeting();
-            }, 1500); // Slight pause before erasing
+            }, 1000); // Slight pause before erasing
             return;
         }
     } else if (currentStep === 'erasing') {
