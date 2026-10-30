@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Marc Violides · AI explained simply</title>
+		<meta name="description" content="Short videos on what AI means for your work. No hype, no doom." />
+		<meta property="og:title" content="Marc Violides · AI explained simply" />
+		<meta property="og:description" content="Short videos on what AI means for your work. No hype, no doom." />
+		<meta property="og:image" content="https://marcv12.github.io/images/links_card.png" />
+		<meta property="og:url" content="https://marcv12.github.io/links/" />
+		<meta name="twitter:card" content="summary_large_image" />
+		<link rel="stylesheet" href="../assets/css/fontawesome-all.min.css" />
+		<style>
+			:root {
+				--ink: #161616;
+				--card: #222222;
+				--card-hover: #2c2c2c;
+				--text: #ffffff;
+				--muted: rgba(255, 255, 255, 0.68);
+				--accent: #FFD60A;
+			}
+			* { box-sizing: border-box; }
+			html, body { margin: 0; }
+			body {
+				background: var(--ink);
+				color: var(--text);
+				font-family: -apple-system, "SF Pro Display", "Helvetica Neue", Arial, sans-serif;
+				min-height: 100vh;
+				display: flex;
+				justify-content: center;
+				padding: 48px 16px 40px;
+			}
+			main { width: 100%; max-width: 440px; text-align: center; }
+			.photo {
+				width: 104px; height: 104px; border-radius: 50%;
+				object-fit: cover; display: block; margin: 0 auto 18px;
+				border: 3px solid var(--accent);
+			}
+			h1 { font-size: 26px; font-weight: 800; margin: 0 0 12px; letter-spacing: -0.3px; }
+			.tag {
+				display: inline-block; background: var(--accent); color: var(--ink);
+				font-weight: 800; font-size: 17px; padding: 3px 12px 5px; border-radius: 8px;
+			}
+			.line { color: var(--muted); font-size: 16px; line-height: 1.5; margin: 14px 0 30px; }
+			ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px; }
+			a.link {
+				display: flex; align-items: center; gap: 14px;
+				background: var(--card); color: var(--text); text-decoration: none;
+				padding: 16px 18px; border-radius: 14px; font-weight: 700; font-size: 17px;
+				transition: background-color .2s ease-in-out, transform .2s ease-in-out;
+			}
+			a.link:hover, a.link:focus-visible { background: var(--card-hover); transform: translateY(-2px); }
+			a.link:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+			a.link .icon { width: 26px; font-size: 22px; text-align: center; }
+			a.link .handle { margin-left: auto; color: var(--muted); font-weight: 500; font-size: 15px; }
+			a.link.main { background: var(--accent); color: var(--ink); }
+			a.link.main .handle { color: rgba(22, 22, 22, 0.65); }
+			a.link.main:hover, a.link.main:focus-visible { background: #ffdf3d; }
+			footer { margin-top: 34px; color: rgba(255, 255, 255, 0.45); font-size: 13px; line-height: 1.6; }
+			footer a { color: inherit; }
+			@media (prefers-reduced-motion: reduce) { a.link { transition: none; } a.link:hover { transform: none; } }
+		</style>
+	</head>
+	<body>
+		<main>
+			<img class="photo" src="../images/my_photo.jpeg" alt="Marc Violides" />
+			<h1>Marc Violides</h1>
+			<span class="tag">What AI means for you</span>
+			<p class="line">AI explained simply, by a software engineer.<br />No hype, no doom.</p>
+			<ul>
+				<li><a class="link main" href="https://www.tiktok.com/@marcviolides" target="_blank" rel="noopener"><span class="icon fab fa-tiktok"></span>TikTok<span class="handle">@marcviolides</span></a></li>
+				<li><a class="link" href="https://www.youtube.com/@MarcViolides" target="_blank" rel="noopener"><span class="icon fab fa-youtube"></span>YouTube<span class="handle">@MarcViolides</span></a></li>
+				<li><a class="link" href="https://www.instagram.com/marc_violides/" target="_blank" rel="noopener"><span class="icon fab fa-instagram"></span>Instagram<span class="handle">@marc_violides</span></a></li>
+				<li><a class="link" href="https://www.linkedin.com/in/marc-violides-b282ba214" target="_blank" rel="noopener"><span class="icon fab fa-linkedin-in"></span>LinkedIn<span class="handle">Marc Violides</span></a></li>
+				<li><a class="link" href="https://marcv12.github.io/"><span class="icon fas fa-briefcase"></span>Portfolio<span class="handle">marcv12.github.io</span></a></li>
+			</ul>
+			<footer>Views are my own.</footer>
+		</main>
+	</body>
+</html>
